@@ -1,90 +1,270 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cherub Magazine</title>
-
-<style>
-@font-face {
-    font-family: 'Horizon';
-    src: url('Horizon_Regular.otf');
-}
-
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
-}
-
-header {
-    position: absolute;
-    width: 100%;
-    text-align: center;
-    padding: 30px 0;
-    z-index: 10;
-}
-
-.logo {
-    font-family: 'Horizon';
-    font-size: 32px;
-    letter-spacing: 6px;
-}
-
-nav {
-    margin-top: 15px;
-}
-
-nav a {
-    margin: 0 20px;
-    text-decoration: none;
-    color: black;
-    font-size: 13px;
-    letter-spacing: 2px;
-}
-
-.hero {
-    height: 100vh;
-    background: 
-        linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7)),
-        url('baftas.jpg') center/cover no-repeat;
-    display: flex;
-    align-items: flex-end;
-    padding: 60px;
-    box-sizing: border-box;
-}
-
-.hero-text {
-    max-width: 800px;
-}
-
-.hero-text h1 {
-    font-family: 'Horizon';
-    font-size: 48px;
-    color: white;
-    line-height: 1.2;
-    margin: 0;
-}
-</style>
-</head>
-
-<body>
-
-<header>
-    <div class="logo">CHERUB</div>
-    <nav>
-        <a href="#">FASHION</a>
-        <a href="#">CULTURE</a>
-        <a href="#">FEATURES</a>
-        <a href="#">ABOUT</a>
-    </nav>
-</header>
-
-<section class="hero">
-    <div class="hero-text">
-        <h1>BAFTAs 2026: The Red Carpet Looks Everyone Will Be Talking About</h1>
-    </div>
-</section>
-
-</body>
-</html>
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+-<meta charset="UTF-8">
+-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+-<title>Cherub Magazine</title>
+-
+-<style>
+-@font-face {
+-    font-family: 'Horizon';
+-    src: url('Horizon_Regular.otf');
+-}
+-
+-body {
+-    margin: 0;
+-    font-family: Arial, sans-serif;
+-    background-color: #ffffff;
+-}
+-
+-header {
+-    position: absolute;
+-    width: 100%;
+-    text-align: center;
+-    padding: 30px 0;
+-    z-index: 10;
+-}
+-
+-.logo {
+-    font-family: 'Horizon';
+-    font-size: 32px;
+-    letter-spacing: 6px;
+-}
+-
+-nav {
+-    margin-top: 15px;
+-}
+-
+-nav a {
+-    margin: 0 20px;
+-    text-decoration: none;
+-    color: black;
+-    font-size: 13px;
+-    letter-spacing: 2px;
+-}
+-
+-.hero {
+-    height: 100vh;
+-    background: 
+-        linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7)),
+-        url('baftas.jpg') center/cover no-repeat;
+-    display: flex;
+-    align-items: flex-end;
+-    padding: 60px;
+-    box-sizing: border-box;
+-}
+-
+-.hero-text {
+-    max-width: 800px;
+-}
+-
+-.hero-text h1 {
+-    font-family: 'Horizon';
+-    font-size: 48px;
+-    color: white;
+-    line-height: 1.2;
+-    margin: 0;
+-}
+-</style>
+-</head>
++  <meta charset="UTF-8" />
++  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
++  <title>Cherub Magazine</title>
++  <style>
++    :root {
++      --bg: #f5f1eb;
++      --ink: #171513;
++      --accent: #8e4b39;
++      --muted: #776e63;
++    }
++
++    * {
++      box-sizing: border-box;
++    }
++
++    body {
++      margin: 0;
++      font-family: "Helvetica Neue", "Avenir Next", Arial, sans-serif;
++      color: var(--ink);
++      background: radial-gradient(circle at top right, #fbf8f4 0%, var(--bg) 45%, #eee6dd 100%);
++      line-height: 1.4;
++    }
++
++    .page {
++      max-width: 1200px;
++      margin: 0 auto;
++      padding: 40px 28px 80px;
++    }
++
++    .masthead {
++      display: flex;
++      justify-content: space-between;
++      align-items: baseline;
++      border-bottom: 1px solid rgba(23, 21, 19, 0.2);
++      padding-bottom: 20px;
++      margin-bottom: 32px;
++    }
++
++    .logo {
++      margin: 0;
++      letter-spacing: 0.35em;
++      font-size: clamp(2rem, 4.6vw, 4rem);
++      font-weight: 700;
++    }
++
++    .issue-meta {
++      text-align: right;
++      font-size: 0.82rem;
++      letter-spacing: 0.2em;
++      text-transform: uppercase;
++      color: var(--muted);
++    }
++
++    .hero {
++      display: grid;
++      grid-template-columns: 1.3fr 1fr;
++      gap: 28px;
++      align-items: stretch;
++    }
++
++    .hero-image-wrap {
++      position: relative;
++      min-height: 70vh;
++      border-radius: 18px;
++      overflow: hidden;
++      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
++    }
++
++    .hero-image-wrap::before {
++      content: "";
++      position: absolute;
++      inset: 0;
++      background: linear-gradient(170deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.55));
++      z-index: 1;
++      pointer-events: none;
++    }
+ 
++    .hero-image {
++      width: 100%;
++      height: 100%;
++      object-fit: cover;
++      display: block;
++      filter: saturate(1.1) contrast(1.04);
++    }
++
++    .hero-tag {
++      position: absolute;
++      top: 22px;
++      left: 22px;
++      z-index: 2;
++      background: rgba(255, 255, 255, 0.9);
++      padding: 8px 14px;
++      border-radius: 999px;
++      font-size: 0.72rem;
++      letter-spacing: 0.18em;
++      text-transform: uppercase;
++      font-weight: 600;
++    }
++
++    .hero-story {
++      background: rgba(255, 255, 255, 0.65);
++      border: 1px solid rgba(23, 21, 19, 0.16);
++      border-radius: 18px;
++      padding: clamp(20px, 2.8vw, 40px);
++      backdrop-filter: blur(6px);
++      display: flex;
++      flex-direction: column;
++      justify-content: center;
++    }
++
++    .kicker {
++      margin: 0;
++      color: var(--accent);
++      letter-spacing: 0.22em;
++      text-transform: uppercase;
++      font-size: 0.74rem;
++      font-weight: 700;
++    }
++
++    h2 {
++      font-family: Georgia, "Times New Roman", serif;
++      margin: 14px 0;
++      font-size: clamp(1.8rem, 3.2vw, 3rem);
++      line-height: 1.08;
++      max-width: 14ch;
++    }
++
++    .dek {
++      margin: 0 0 18px;
++      font-size: 1.05rem;
++      color: #312c26;
++      max-width: 38ch;
++    }
++
++    .byline {
++      margin: 0;
++      text-transform: uppercase;
++      letter-spacing: 0.2em;
++      font-size: 0.74rem;
++      color: var(--muted);
++    }
++
++    @media (max-width: 900px) {
++      .hero {
++        grid-template-columns: 1fr;
++      }
++
++      .hero-image-wrap {
++        min-height: 65vh;
++      }
++
++      .issue-meta {
++        display: none;
++      }
++    }
++  </style>
++</head>
+ <body>
++  <main class="page">
++    <header class="masthead">
++      <h1 class="logo">CHERUB</h1>
++      <p class="issue-meta">Issue 01 · Spring Style Ledger</p>
++    </header>
+ 
+-<header>
+-    <div class="logo">CHERUB</div>
+-    <nav>
+-        <a href="#">FASHION</a>
+-        <a href="#">CULTURE</a>
+-        <a href="#">FEATURES</a>
+-        <a href="#">ABOUT</a>
+-    </nav>
+-</header>
+-
+-<section class="hero">
+-    <div class="hero-text">
+-        <h1>BAFTAs 2026: The Red Carpet Looks Everyone Will Be Talking About</h1>
+-    </div>
+-</section>
++    <section class="hero" aria-label="Main feature story">
++      <figure class="hero-image-wrap">
++        <span class="hero-tag">Cover Feature</span>
++        <img class="hero-image" src="feature-image.png" alt="Evening portrait of a stylish couple seated in a theater, dressed in black formalwear" />
++      </figure>
+ 
++      <article class="hero-story">
++        <p class="kicker">Editorial</p>
++        <h2>The New Formal: Intimacy, Icons, and the Return of Black-Tie Drama</h2>
++        <p class="dek">
++          Cherub Magazine opens with a cinematic front-row portrait that captures modern glamour: a polished tuxedo, a jeweled slip dress,
++          and the quiet confidence of style that doesn’t shout.
++        </p>
++        <p class="byline">Story by Cherub Editors</p>
++      </article>
++    </section>
++  </main>
+ </body>
+ </html>
+ 
+EOF
+)
