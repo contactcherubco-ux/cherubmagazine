@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
  <html lang="en">
  <head>
 -<meta charset="UTF-8">
@@ -71,165 +71,282 @@
 +  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 +  <title>Cherub Magazine</title>
 +  <style>
-+    :root {
-+      --bg: #f5f1eb;
-+      --ink: #171513;
-+      --accent: #8e4b39;
-+      --muted: #776e63;
-+    }
++    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap');
++
++    /* =========================
++       CHERUB BASE RESET
++    ========================= */
 +
 +    * {
++      margin: 0;
++      padding: 0;
 +      box-sizing: border-box;
 +    }
 +
++    html {
++      scroll-behavior: smooth;
++    }
++
 +    body {
-+      margin: 0;
-+      font-family: "Helvetica Neue", "Avenir Next", Arial, sans-serif;
-+      color: var(--ink);
-+      background: radial-gradient(circle at top right, #fbf8f4 0%, var(--bg) 45%, #eee6dd 100%);
-+      line-height: 1.4;
++      font-family: 'Inter', sans-serif;
++      background-color: #F4F2EE;
++      color: #000000;
++      line-height: 1.8;
++      font-size: 17px;
++      -webkit-font-smoothing: antialiased;
++      text-rendering: optimizeLegibility;
++      opacity: 0;
++      animation: fadeIn 0.4s ease forwards;
 +    }
 +
-+    .page {
-+      max-width: 1200px;
-+      margin: 0 auto;
-+      padding: 40px 28px 80px;
++    @keyframes fadeIn {
++      to { opacity: 1; }
 +    }
 +
-+    .masthead {
-+      display: flex;
-+      justify-content: space-between;
-+      align-items: baseline;
-+      border-bottom: 1px solid rgba(23, 21, 19, 0.2);
-+      padding-bottom: 20px;
-+      margin-bottom: 32px;
++    /* =========================
++       TYPOGRAPHY
++    ========================= */
++
++    h1, h2, h3 {
++      font-weight: 900;
++      line-height: 1.1;
++      letter-spacing: -0.02em;
 +    }
 +
-+    .logo {
-+      margin: 0;
-+      letter-spacing: 0.35em;
-+      font-size: clamp(2rem, 4.6vw, 4rem);
-+      font-weight: 700;
-+    }
-+
-+    .issue-meta {
-+      text-align: right;
-+      font-size: 0.82rem;
-+      letter-spacing: 0.2em;
-+      text-transform: uppercase;
-+      color: var(--muted);
-+    }
-+
-+    .hero {
-+      display: grid;
-+      grid-template-columns: 1.3fr 1fr;
-+      gap: 28px;
-+      align-items: stretch;
-+    }
-+
-+    .hero-image-wrap {
-+      position: relative;
-+      min-height: 70vh;
-+      border-radius: 18px;
-+      overflow: hidden;
-+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
-+    }
-+
-+    .hero-image-wrap::before {
-+      content: "";
-+      position: absolute;
-+      inset: 0;
-+      background: linear-gradient(170deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.55));
-+      z-index: 1;
-+      pointer-events: none;
-+    }
- 
-+    .hero-image {
-+      width: 100%;
-+      height: 100%;
-+      object-fit: cover;
-+      display: block;
-+      filter: saturate(1.1) contrast(1.04);
-+    }
-+
-+    .hero-tag {
-+      position: absolute;
-+      top: 22px;
-+      left: 22px;
-+      z-index: 2;
-+      background: rgba(255, 255, 255, 0.9);
-+      padding: 8px 14px;
-+      border-radius: 999px;
-+      font-size: 0.72rem;
-+      letter-spacing: 0.18em;
-+      text-transform: uppercase;
-+      font-weight: 600;
-+    }
-+
-+    .hero-story {
-+      background: rgba(255, 255, 255, 0.65);
-+      border: 1px solid rgba(23, 21, 19, 0.16);
-+      border-radius: 18px;
-+      padding: clamp(20px, 2.8vw, 40px);
-+      backdrop-filter: blur(6px);
-+      display: flex;
-+      flex-direction: column;
-+      justify-content: center;
-+    }
-+
-+    .kicker {
-+      margin: 0;
-+      color: var(--accent);
-+      letter-spacing: 0.22em;
-+      text-transform: uppercase;
-+      font-size: 0.74rem;
-+      font-weight: 700;
++    h1 {
++      font-size: clamp(48px, 6vw, 96px);
 +    }
 +
 +    h2 {
-+      font-family: Georgia, "Times New Roman", serif;
-+      margin: 14px 0;
-+      font-size: clamp(1.8rem, 3.2vw, 3rem);
-+      line-height: 1.08;
-+      max-width: 14ch;
++      font-size: clamp(28px, 3vw, 48px);
 +    }
 +
-+    .dek {
-+      margin: 0 0 18px;
-+      font-size: 1.05rem;
-+      color: #312c26;
-+      max-width: 38ch;
++    h3 {
++      font-size: 22px;
 +    }
 +
-+    .byline {
-+      margin: 0;
++    p {
++      max-width: 720px;
++      margin: 20px auto;
++    }
++
++    .small-caps {
++      font-size: 12px;
++      letter-spacing: 0.25em;
 +      text-transform: uppercase;
-+      letter-spacing: 0.2em;
-+      font-size: 0.74rem;
-+      color: var(--muted);
++      color: #A8A8A8;
 +    }
 +
-+    @media (max-width: 900px) {
-+      .hero {
++    /* =========================
++       LAYOUT
++    ========================= */
++
++    .section {
++      padding: 120px 8%;
++    }
++
++    .container {
++      max-width: 1400px;
++      margin: 0 auto;
++    }
++
++    .text-block {
++      max-width: 720px;
++      margin: 0 auto;
++    }
++
++    /* =========================
++       NAVIGATION
++    ========================= */
++
++    nav {
++      display: flex;
++      justify-content: space-between;
++      align-items: center;
++      padding: 30px 8%;
++      text-transform: uppercase;
++      font-size: 12px;
++      letter-spacing: 0.25em;
++    }
++
++    .nav-links {
++      display: flex;
++      gap: 24px;
++    }
++
++    nav a {
++      text-decoration: none;
++      color: #000;
++      position: relative;
++    }
++
++    nav a::after {
++      content: "";
++      position: absolute;
++      left: 0;
++      bottom: -4px;
++      width: 0;
++      height: 1px;
++      background: #000;
++      transition: width 0.2s ease;
++    }
++
++    nav a:hover::after {
++      width: 100%;
++    }
++
++    /* =========================
++       HERO SECTION
++    ========================= */
++
++    .hero {
++      position: relative;
++      height: 90vh;
++      background-size: cover;
++      background-position: center;
++      display: flex;
++      align-items: flex-end;
++      padding: 80px;
++      background-image: url('feature-image.png');
++      isolation: isolate;
++    }
++
++    .hero h1 {
++      color: white;
++      max-width: 900px;
++      position: relative;
++      z-index: 2;
++    }
++
++    .hero-overlay {
++      position: absolute;
++      inset: 0;
++      background: rgba(0,0,0,0.25);
++      z-index: 1;
++    }
+ 
++    /* =========================
++       GRID SYSTEM
++    ========================= */
++
++    .editorial-grid {
++      display: grid;
++      grid-template-columns: repeat(3, 1fr);
++      gap: 40px;
++    }
++
++    .editorial-card {
++      position: relative;
++      overflow: hidden;
++    }
++
++    .editorial-card img {
++      width: 100%;
++      height: auto;
++      display: block;
++      transition: opacity 0.3s ease;
++    }
++
++    .editorial-card:hover img {
++      opacity: 0.85;
++    }
++
++    .editorial-card h3 {
++      margin-top: 20px;
++    }
++
++    /* =========================
++       FEATURE FULL WIDTH
++    ========================= */
++
++    .feature-full {
++      width: 100%;
++    }
++
++    .feature-full img {
++      width: 100%;
++      display: block;
++    }
++
++    /* =========================
++       ARTICLE PAGE
++    ========================= */
++
++    .article-header {
++      padding: 160px 8% 80px;
++    }
++
++    .article-body {
++      padding: 0 8% 120px;
++    }
++
++    .article-body p {
++      margin-bottom: 28px;
++    }
++
++    /* =========================
++       IMAGES
++    ========================= */
++
++    img {
++      max-width: 100%;
++    }
++
++    figure {
++      margin: 80px 0;
++    }
++
++    figcaption {
++      font-size: 12px;
++      letter-spacing: 0.2em;
++      text-transform: uppercase;
++      color: #A8A8A8;
++      margin-top: 10px;
++    }
++
++    /* =========================
++       RESPONSIVE
++    ========================= */
++
++    @media (max-width: 1024px) {
++      .editorial-grid {
++        grid-template-columns: 1fr 1fr;
++      }
++    }
++
++    @media (max-width: 768px) {
++      .editorial-grid {
 +        grid-template-columns: 1fr;
 +      }
 +
-+      .hero-image-wrap {
-+        min-height: 65vh;
++      .hero {
++        padding: 40px;
 +      }
 +
-+      .issue-meta {
-+        display: none;
++      .nav-links {
++        gap: 12px;
++      }
++
++      h1 {
++        font-size: 42px;
 +      }
 +    }
 +  </style>
 +</head>
  <body>
-+  <main class="page">
-+    <header class="masthead">
-+      <h1 class="logo">CHERUB</h1>
-+      <p class="issue-meta">Issue 01 · Spring Style Ledger</p>
-+    </header>
++  <nav>
++    <a href="#">Cherub</a>
++    <div class="nav-links">
++      <a href="#features">Features</a>
++      <a href="#fashion">Fashion</a>
++      <a href="#culture">Culture</a>
++    </div>
++  </nav>
++
++  <section class="hero" id="top">
++    <div class="hero-overlay"></div>
++    <h1>CHERUB MAGAZINE: THE EDITORIAL ISSUE</h1>
++  </section>
  
 -<header>
 -    <div class="logo">CHERUB</div>
@@ -244,27 +361,33 @@
 -<section class="hero">
 -    <div class="hero-text">
 -        <h1>BAFTAs 2026: The Red Carpet Looks Everyone Will Be Talking About</h1>
--    </div>
++  <section class="section" id="features">
++    <div class="container text-block">
++      <p class="small-caps">Main Feature</p>
++      <h2>An Intimate Night in Black Tie</h2>
++      <p>
++        Our cover story captures a cinematic evening portrait—sharp tailoring, jeweled accents,
++        and modern glamour framed with the confidence of timeless editorial style.
++      </p>
+     </div>
 -</section>
-+    <section class="hero" aria-label="Main feature story">
-+      <figure class="hero-image-wrap">
-+        <span class="hero-tag">Cover Feature</span>
-+        <img class="hero-image" src="feature-image.png" alt="Evening portrait of a stylish couple seated in a theater, dressed in black formalwear" />
-+      </figure>
++  </section>
  
-+      <article class="hero-story">
-+        <p class="kicker">Editorial</p>
-+        <h2>The New Formal: Intimacy, Icons, and the Return of Black-Tie Drama</h2>
-+        <p class="dek">
-+          Cherub Magazine opens with a cinematic front-row portrait that captures modern glamour: a polished tuxedo, a jeweled slip dress,
-+          and the quiet confidence of style that doesn’t shout.
-+        </p>
-+        <p class="byline">Story by Cherub Editors</p>
++  <section class="section" id="fashion">
++    <div class="container editorial-grid">
++      <article class="editorial-card">
++        <img src="feature-image.png" alt="Close-up of black tie evening style" />
++        <h3>Dress Codes, Rewritten</h3>
 +      </article>
-+    </section>
-+  </main>
++      <article class="editorial-card">
++        <img src="feature-image.png" alt="Editorial portrait in eveningwear" />
++        <h3>The New Formal Mood</h3>
++      </article>
++      <article class="editorial-card">
++        <img src="feature-image.png" alt="Elegant couple in theater seating" />
++        <h3>Front Row Intimacy</h3>
++      </article>
++    </div>
++  </section>
  </body>
  </html>
- 
-EOF
-)
