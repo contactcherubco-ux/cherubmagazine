@@ -1,393 +1,47 @@
 <!DOCTYPE html>
- <html lang="en">
- <head>
--<meta charset="UTF-8">
--<meta name="viewport" content="width=device-width, initial-scale=1.0">
--<title>Cherub Magazine</title>
--
--<style>
--@font-face {
--    font-family: 'Horizon';
--    src: url('Horizon_Regular.otf');
--}
--
--body {
--    margin: 0;
--    font-family: Arial, sans-serif;
--    background-color: #ffffff;
--}
--
--header {
--    position: absolute;
--    width: 100%;
--    text-align: center;
--    padding: 30px 0;
--    z-index: 10;
--}
--
--.logo {
--    font-family: 'Horizon';
--    font-size: 32px;
--    letter-spacing: 6px;
--}
--
--nav {
--    margin-top: 15px;
--}
--
--nav a {
--    margin: 0 20px;
--    text-decoration: none;
--    color: black;
--    font-size: 13px;
--    letter-spacing: 2px;
--}
--
--.hero {
--    height: 100vh;
--    background: 
--        linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7)),
--        url('baftas.jpg') center/cover no-repeat;
--    display: flex;
--    align-items: flex-end;
--    padding: 60px;
--    box-sizing: border-box;
--}
--
--.hero-text {
--    max-width: 800px;
--}
--
--.hero-text h1 {
--    font-family: 'Horizon';
--    font-size: 48px;
--    color: white;
--    line-height: 1.2;
--    margin: 0;
--}
--</style>
--</head>
-+  <meta charset="UTF-8" />
-+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-+  <title>Cherub Magazine</title>
-+  <style>
-+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap');
-+
-+    /* =========================
-+       CHERUB BASE RESET
-+    ========================= */
-+
-+    * {
-+      margin: 0;
-+      padding: 0;
-+      box-sizing: border-box;
-+    }
-+
-+    html {
-+      scroll-behavior: smooth;
-+    }
-+
-+    body {
-+      font-family: 'Inter', sans-serif;
-+      background-color: #F4F2EE;
-+      color: #000000;
-+      line-height: 1.8;
-+      font-size: 17px;
-+      -webkit-font-smoothing: antialiased;
-+      text-rendering: optimizeLegibility;
-+      opacity: 0;
-+      animation: fadeIn 0.4s ease forwards;
-+    }
-+
-+    @keyframes fadeIn {
-+      to { opacity: 1; }
-+    }
-+
-+    /* =========================
-+       TYPOGRAPHY
-+    ========================= */
-+
-+    h1, h2, h3 {
-+      font-weight: 900;
-+      line-height: 1.1;
-+      letter-spacing: -0.02em;
-+    }
-+
-+    h1 {
-+      font-size: clamp(48px, 6vw, 96px);
-+    }
-+
-+    h2 {
-+      font-size: clamp(28px, 3vw, 48px);
-+    }
-+
-+    h3 {
-+      font-size: 22px;
-+    }
-+
-+    p {
-+      max-width: 720px;
-+      margin: 20px auto;
-+    }
-+
-+    .small-caps {
-+      font-size: 12px;
-+      letter-spacing: 0.25em;
-+      text-transform: uppercase;
-+      color: #A8A8A8;
-+    }
-+
-+    /* =========================
-+       LAYOUT
-+    ========================= */
-+
-+    .section {
-+      padding: 120px 8%;
-+    }
-+
-+    .container {
-+      max-width: 1400px;
-+      margin: 0 auto;
-+    }
-+
-+    .text-block {
-+      max-width: 720px;
-+      margin: 0 auto;
-+    }
-+
-+    /* =========================
-+       NAVIGATION
-+    ========================= */
-+
-+    nav {
-+      display: flex;
-+      justify-content: space-between;
-+      align-items: center;
-+      padding: 30px 8%;
-+      text-transform: uppercase;
-+      font-size: 12px;
-+      letter-spacing: 0.25em;
-+    }
-+
-+    .nav-links {
-+      display: flex;
-+      gap: 24px;
-+    }
-+
-+    nav a {
-+      text-decoration: none;
-+      color: #000;
-+      position: relative;
-+    }
-+
-+    nav a::after {
-+      content: "";
-+      position: absolute;
-+      left: 0;
-+      bottom: -4px;
-+      width: 0;
-+      height: 1px;
-+      background: #000;
-+      transition: width 0.2s ease;
-+    }
-+
-+    nav a:hover::after {
-+      width: 100%;
-+    }
-+
-+    /* =========================
-+       HERO SECTION
-+    ========================= */
-+
-+    .hero {
-+      position: relative;
-+      height: 90vh;
-+      background-size: cover;
-+      background-position: center;
-+      display: flex;
-+      align-items: flex-end;
-+      padding: 80px;
-+      background-image: url('feature-image.png');
-+      isolation: isolate;
-+    }
-+
-+    .hero h1 {
-+      color: white;
-+      max-width: 900px;
-+      position: relative;
-+      z-index: 2;
-+    }
-+
-+    .hero-overlay {
-+      position: absolute;
-+      inset: 0;
-+      background: rgba(0,0,0,0.25);
-+      z-index: 1;
-+    }
- 
-+    /* =========================
-+       GRID SYSTEM
-+    ========================= */
-+
-+    .editorial-grid {
-+      display: grid;
-+      grid-template-columns: repeat(3, 1fr);
-+      gap: 40px;
-+    }
-+
-+    .editorial-card {
-+      position: relative;
-+      overflow: hidden;
-+    }
-+
-+    .editorial-card img {
-+      width: 100%;
-+      height: auto;
-+      display: block;
-+      transition: opacity 0.3s ease;
-+    }
-+
-+    .editorial-card:hover img {
-+      opacity: 0.85;
-+    }
-+
-+    .editorial-card h3 {
-+      margin-top: 20px;
-+    }
-+
-+    /* =========================
-+       FEATURE FULL WIDTH
-+    ========================= */
-+
-+    .feature-full {
-+      width: 100%;
-+    }
-+
-+    .feature-full img {
-+      width: 100%;
-+      display: block;
-+    }
-+
-+    /* =========================
-+       ARTICLE PAGE
-+    ========================= */
-+
-+    .article-header {
-+      padding: 160px 8% 80px;
-+    }
-+
-+    .article-body {
-+      padding: 0 8% 120px;
-+    }
-+
-+    .article-body p {
-+      margin-bottom: 28px;
-+    }
-+
-+    /* =========================
-+       IMAGES
-+    ========================= */
-+
-+    img {
-+      max-width: 100%;
-+    }
-+
-+    figure {
-+      margin: 80px 0;
-+    }
-+
-+    figcaption {
-+      font-size: 12px;
-+      letter-spacing: 0.2em;
-+      text-transform: uppercase;
-+      color: #A8A8A8;
-+      margin-top: 10px;
-+    }
-+
-+    /* =========================
-+       RESPONSIVE
-+    ========================= */
-+
-+    @media (max-width: 1024px) {
-+      .editorial-grid {
-+        grid-template-columns: 1fr 1fr;
-+      }
-+    }
-+
-+    @media (max-width: 768px) {
-+      .editorial-grid {
-+        grid-template-columns: 1fr;
-+      }
-+
-+      .hero {
-+        padding: 40px;
-+      }
-+
-+      .nav-links {
-+        gap: 12px;
-+      }
-+
-+      h1 {
-+        font-size: 42px;
-+      }
-+    }
-+  </style>
-+</head>
- <body>
-+  <nav>
-+    <a href="#">Cherub</a>
-+    <div class="nav-links">
-+      <a href="#features">Features</a>
-+      <a href="#fashion">Fashion</a>
-+      <a href="#culture">Culture</a>
-+    </div>
-+  </nav>
-+
-+  <section class="hero" id="top">
-+    <div class="hero-overlay"></div>
-+    <h1>CHERUB MAGAZINE: THE EDITORIAL ISSUE</h1>
-+  </section>
- 
--<header>
--    <div class="logo">CHERUB</div>
--    <nav>
--        <a href="#">FASHION</a>
--        <a href="#">CULTURE</a>
--        <a href="#">FEATURES</a>
--        <a href="#">ABOUT</a>
--    </nav>
--</header>
--
--<section class="hero">
--    <div class="hero-text">
--        <h1>BAFTAs 2026: The Red Carpet Looks Everyone Will Be Talking About</h1>
-+  <section class="section" id="features">
-+    <div class="container text-block">
-+      <p class="small-caps">Main Feature</p>
-+      <h2>An Intimate Night in Black Tie</h2>
-+      <p>
-+        Our cover story captures a cinematic evening portrait—sharp tailoring, jeweled accents,
-+        and modern glamour framed with the confidence of timeless editorial style.
-+      </p>
-     </div>
--</section>
-+  </section>
- 
-+  <section class="section" id="fashion">
-+    <div class="container editorial-grid">
-+      <article class="editorial-card">
-+        <img src="feature-image.png" alt="Close-up of black tie evening style" />
-+        <h3>Dress Codes, Rewritten</h3>
-+      </article>
-+      <article class="editorial-card">
-+        <img src="feature-image.png" alt="Editorial portrait in eveningwear" />
-+        <h3>The New Formal Mood</h3>
-+      </article>
-+      <article class="editorial-card">
-+        <img src="feature-image.png" alt="Elegant couple in theater seating" />
-+        <h3>Front Row Intimacy</h3>
-+      </article>
-+    </div>
-+  </section>
- </body>
- </html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CHERUB</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <header>
+    <h1>CHERUB</h1>
+    <nav>
+      <a href="#">Fashion</a>
+      <a href="#">Culture</a>
+      <a href="#">Art</a>
+      <a href="#">Beauty</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>PinkPantheress Makes History</h2>
+    <p>The new architect of sound wins Best Producer at the Brit Awards.</p>
+  </section>
+
+  <section class="grid">
+    <div class="card">
+      <h3>Cover Story</h3>
+      <p>A new era of discipline-driven artistry.</p>
+    </div>
+
+    <div class="card">
+      <h3>Fashion</h3>
+      <p>Minimalism meets modern British cool.</p>
+    </div>
+
+    <div class="card">
+      <h3>Culture</h3>
+      <p>The voices shaping 2026.</p>
+    </div>
+  </section>
+
+</body>
+</html>
